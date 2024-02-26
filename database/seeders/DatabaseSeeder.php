@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Listing::create([
-            'title' => 'Laravel Developer',
+            'title' => 'Full-Stack Laravel Developer',
             'tags' => 'Laravel, Vue.js, PHP',
             'company' => 'nde Industries',
             'location' => 'Hartford, CT',
@@ -37,6 +37,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'nde95@example.com',
             'website' => 'https://www.nde.io',
             'description' => 'We are looking for a React Developer to join our team.',
+        ]);
+        Listing::create([
+            'title' => 'PHP Developer',
+            'tags' => 'PHP, Laravel',
+            'company' => 'nde Enterprises',
+            'location' => 'Norwich, CT',
+            'email' => 'nde95@testing.com',
+            'website' => 'https://www.nde.net',
+            'description' => 'We are looking for a PHP Developer to join our team.',
         ]);
     }
 }
