@@ -14,4 +14,8 @@
     <p>No results found</p>
 @endunless
 </div>
+
+<div class="mx-4 my-4">
+    {{ $listings->links() }}
+</div>
 </x-layout>
