@@ -45,6 +45,6 @@ class ListingController extends Controller
 
         Listing::create($formData);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Your listing has been added!');
     }
 }
