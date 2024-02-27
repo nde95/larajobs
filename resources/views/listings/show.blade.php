@@ -51,8 +51,16 @@
             </div>
         </x-card>
         <x-card class="mt-4 p-2 flex space-x-6">
-            <a href="/listings/{{$listing->id}}/edit" class="bg-[#F05340] text-white py-2 px-4 rounded-xl hover:opacity-80"
+            <a href="/listings/{{$listing->id}}/edit" class="bg-black text-white py-2 px-4 rounded-xl hover:opacity-80"
                 ><i class="fa-solid fa-pencil"></i> Edit</a>
+
+            <form action="/listings/{{$listing->id}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-[#F05340] text-white py-2 px-4 rounded-xl hover:opacity-80"
+                    ><i class="fa-solid fa-trash"></i> Delete</button
+                >
+            </form>
         </x-card>
     </div>
 </x-layout>

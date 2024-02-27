@@ -30,6 +30,9 @@ Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 // update listing with submission
 Route::put('/listings/{listing}', [ListingController::class, 'update']);
 
+// delete listing
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
 // search listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
