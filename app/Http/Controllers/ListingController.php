@@ -66,6 +66,11 @@ class ListingController extends Controller
 
     public function update(Request $request, Listing $listing)
     {
+        // validate user updating the post
+        if(auth()->id() !== $listing->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
         // update existing listing data
         $formData = $request->validate([
             'title' => 'required',
@@ -89,6 +94,10 @@ class ListingController extends Controller
 
     public function destroy(Listing $listing)
     {
+        // validate user deleting the post
+        if(auth()->id() !== $listing->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
         // delete a listing
         $listing->delete();
 
