@@ -32,4 +32,37 @@ class UserController extends Controller
         auth()->login($user);
         return redirect('/')->with('message', 'Account created successfully!');
     }
+
+    // login user form
+    public function login()
+    {
+        return view('users.login');
+    }
+
+    // log user out
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'Logged out successfully!');
+    }
+
+    // log user in
+    public function authenticate(Request $request)
+    {
+        $formData = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (auth()->attempt($formData)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('message', 'Logged in successfully!');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
 }
