@@ -48,6 +48,8 @@ class ListingController extends Controller
             $formData['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
+        $formData['user_id'] = auth()->id();
+
         Listing::create($formData);
 
         return redirect('/')->with('message', 'Your listing has been added!');

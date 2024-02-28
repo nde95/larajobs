@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Listing;
 use Illuminate\Database\Seeder;
 
@@ -13,15 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(5)->create();
-
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $user = User::factory()->create([
+            'name' => 'Nde95',
+            'email' => 'nde95@admin.com',
         ]);
 
         Listing::create([
             'title' => 'Full-Stack Laravel Developer',
+            'user_id' => $user->id,
             'tags' => 'Laravel, Vue.js, PHP',
             'company' => 'nde Industries',
             'location' => 'Hartford, CT',
@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Listing::create([
             'title' => 'Front-End React Developer',
+            'user_id' => $user->id,
             'tags' => 'React, Typescript',
             'company' => 'nde Incorperated',
             'location' => 'Manchester, CT',
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Listing::create([
             'title' => 'PHP Developer',
+            'user_id' => $user->id,
             'tags' => 'PHP, Laravel',
             'company' => 'nde Enterprises',
             'location' => 'Norwich, CT',
